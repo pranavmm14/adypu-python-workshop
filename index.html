@@ -1,156 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Basics Refresher</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Fira+Code&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Oswald', sans-serif;
-            background-color: #1e1e2c;
-            color: #e2e2e2;
-            margin: 0;
-            padding: 20px;
-        }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Python Game Development Workshop</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Fira+Code&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Python Workshop</a>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="python_refresher.html">Python Basics</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#feedback">Feedback</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
 
-        
-        h3 {
-            color: #ffea7d;
-        }
-        .code-block {
-            /* background: #e2e2e2; */
-            background: rgb(40, 40, 61);
-            padding: 5px;
-            border-radius: 8px;
-            position: relative;
-            font-family: 'Fira Code', monospace;
-            font-size: 14px;
-            white-space: pre-wrap;
-            border-left: 5px solid #24bfeb;
-            /* width: 00px; */
-            height: max-content !important;
-        }
-        .copy-btn {
-            position: absolute;
-            top: 8px;
-            right: 12px;
-            background: #24bfeb;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            cursor: pointer;
-            font-size: 12px;
-            border-radius: 3px;
-            transition: background 0.3s;
-        }
-        .copy-btn:hover {
-            background: #1aa3d1;
-        }
-        .task, .try-this {
-            background: #2b218d;
-            padding: 12px;
-            margin-top: 12px;
-            border-radius: 5px;
-            font-weight: bold;
-            border-left: 5px solid #e07a88;
-        }
-        code{
-            padding: 0;
-            margin: 0;
-            display: flex;
-        }
-    </style>
-</head>
-<body>
-    <h1>Python Basics Refresher</h1>
-    
-    <h3>1. Variables & Data Types</h3>
-    <p>Python supports various data types like int, float, string, and boolean.</p>
-    <div class="code-block">
-        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-        <code>
-name = "John"
-age = 25
-is_active = True
-height = 5.9</code>
-    </div>
-    <div class="try-this">Try This: Declare a variable `score` and assign a value of 100.</div>
-    
-    <h3>2. Conditional Statements</h3>
-    <p>Use `if`, `elif`, and `else` to control flow.</p>
-    <div class="code-block">
-        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-        <code>
-score = 85
-if score >= 90:
-    print("Excellent!")
-elif score >= 75:
-    print("Good Job!")
-else:
-    print("Keep Trying!")</code>
-    </div>
-    <div class="task">Task: Modify the above code to include a condition for `score < 50` that prints "Needs Improvement".</div>
-    
-    <h3>3. Loops</h3>
-    <p>Loops help in iterating over sequences or running code multiple times.</p>
-    <div class="code-block">
-        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-        <code>
-for i in range(5):
-    print("Iteration:", i)</code>
-    </div>
-    <div class="try-this">Try This: Create a loop that prints numbers from 1 to 10.</div>
-    
-    <h3>4. Functions</h3>
-    <p>Functions allow code reuse and better organization.</p>
-    <div class="code-block">
-        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-        <code>
-def greet(name):
-    print("Hello, " + name + "!")
+        <script>
+            function toggleMenu() {
+                document.querySelector(".nav-links").classList.toggle("active");
+            }
+        </script>
 
-greet("Alice")</code>
-    </div>
-    <div class="task">Task: Write a function that takes two numbers and returns their sum.</div>
-    
-    <h3>5. Lists</h3>
-    <p>Lists store multiple values in a single variable.</p>
-    <div class="code-block">
-        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-        <code>
-fruits = ["apple", "banana", "cherry"]
-print(fruits[0])</code>
-    </div>
-    <div class="try-this">Try This: Add "mango" to the above list.</div>
-    
-    <h3>6. Dictionaries</h3>
-    <p>Dictionaries store data in key-value pairs.</p>
-    <div class="code-block">
-        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-        <code>
-student = {"name": "John", "age": 20}
-print(student["name"])</code>
-    </div>
-    <div class="task">Task: Add a key "grade" with value "A" to the dictionary.</div>
-    
-    <h3>7. List Comprehensions</h3>
-    <p>A concise way to create lists.</p>
-    <div class="code-block">
-        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-        <code>
-squares = [x**2 for x in range(5)]
-print(squares)</code>
-    </div>
-    <div class="try-this">Try This: Create a list comprehension to store even numbers from 1 to 10.</div>
-    
-    <script>
-        function copyCode(button) {
-            let codeBlock = button.nextElementSibling.innerText;
-            navigator.clipboard.writeText(codeBlock);
-            button.innerText = "Copied!";
-            setTimeout(() => button.innerText = "Copy", 2000);
-        }
-    </script>
-</body>
+        <header>
+            <h1>Python Game Development Workshop</h1>
+            <p>Explore Python fundamentals and build exciting games!</p>
+        </header>
+
+        <section id="about">
+            <h2>About the Workshop</h2>
+            <p>
+                This workshop is designed to introduce students to game
+                development using Python. We cover essential Python concepts and
+                progressively build fun games.
+            </p>
+        </section>
+
+        <section id="games">
+            <h2>Game Projects</h2>
+            <div class="link-box">
+                <a href="python_refresher.html">🔗 Python Basics Refresher</a>
+            </div>
+            <div class="link-box"><a href="hangman.html">🔗 Hangman Game</a></div>
+            <div class="link-box"><a href="#">🔗 Snake Game (Coming Soon)</a></div>
+            <div class="link-box"><a href="#">🔗 Memory Card Game (Coming Soon)</a></div>
+            <div class="link-box"><a href="#">🔗 Reversi Game (Coming Soon)</a></div>
+        </section>
+
+        <section id="feedback">
+            <h2>Workshop Feedback</h2>
+            <div class="slider">
+                <img src="placeholder1.jpg" alt="Feedback Image 1" />
+                <img src="placeholder2.jpg" alt="Feedback Image 2" />
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2>Workshop Photos</h2>
+            <div class="slider">
+                <img src="workshop1.jpg" alt="Workshop Photo 1" />
+                <img src="workshop2.jpg" alt="Workshop Photo 2" />
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>For more details, reach out via email or social media.</p>
+        </section>
+    </body>
+
+    <footer>
+        <p>&copy; 2025 Pranav Mandar Mehendale. All rights reserved.</p>
+    </footer>
 </html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Python Basics Refresher</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <a href="index.html" class="logo">Home</a>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links">
+                <li><a href="#variables">Variables</a></li>
+                <li><a href="#conditionals">Conditionals</a></li>
+                <li><a href="#loops">Loops</a></li>
+                <li><a href="#functions">Functions</a></li>
+                <li><a href="#lists">Lists</a></li>
+                <li><a href="#dictionaries">Dictionaries</a></li>
+                <li><a href="#list-comp">List Comprehensions</a></li>
+            </ul>
+        </nav>
+
+        <script>
+            function toggleMenu() {
+                document.querySelector(".nav-links").classList.toggle("show");
+            }
+        </script>
+
+        <header>
+            <h1>Python Basics Refresher</h1>
+        </header>
+
+        <main>
+            <section id="variables">
+                <h2>Variables & Data Types</h2>
+                <p>
+                    Python supports various data types like int, float, string,
+                    and boolean.
+                </p>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code>name = "John"
+age = 25
+is_active = True
+height = 5.9</code></pre>
+                </div>
+                <div class="task">
+                    Task: Declare a variable <code>score</code> and assign a
+                    value of 100.
+                </div>
+            </section>
+
+            <section id="conditionals">
+                <h2>Conditional Statements</h2>
+                <p>
+                    Use <code>if</code>, <code>elif</code>, and
+                    <code>else</code> to control flow.
+                </p>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code>score = 85
+if score >= 90:
+    print("Excellent!")
+elif score >= 75:
+    print("Good Job!")
+else:
+    print("Keep Trying!")</code></pre>
+                </div>
+                <div class="task">
+                    Task: Add a condition for <code>score &lt; 50</code> that
+                    prints "Needs Improvement".
+                </div>
+            </section>
+
+            <section id="loops">
+                <h2>Loops</h2>
+                <p>
+                    Loops help in iterating over sequences or running code
+                    multiple times.
+                </p>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code>for i in range(5):
+    print("Iteration:", i)</code></pre>
+                </div>
+                <div class="task">
+                    Task: Create a loop that prints numbers from 1 to 10.
+                </div>
+            </section>
+
+            <section id="functions">
+                <h2>Functions</h2>
+                <p>Functions allow code reuse and better organization.</p>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code>def greet(name):
+    print("Hello, " + name + "!")
+
+greet("Alice")</code></pre>
+                </div>
+                <div class="task">
+                    Task: Write a function that takes two numbers and returns
+                    their sum.
+                </div>
+            </section>
+
+            <section id="lists">
+                <h2>Lists</h2>
+                <p>Lists store multiple values in a single variable.</p>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code>fruits = ["apple", "banana", "cherry"]
+print(fruits[0])</code></pre>
+                </div>
+                <div class="task">Task: Add "mango" to the above list.</div>
+            </section>
+
+            <section id="dictionaries">
+                <h2>Dictionaries</h2>
+                <p>Dictionaries store data in key-value pairs.</p>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code>student = {"name": "John", "age": 20}
+print(student["name"])</code></pre>
+                </div>
+                <div class="task">
+                    Task: Add a key "grade" with value "A" to the dictionary.
+                </div>
+            </section>
+
+            <section id="list-comp">
+                <h2>List Comprehensions</h2>
+                <p>A concise way to create lists.</p>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code>squares = [x**2 for x in range(5)]
+print(squares)</code></pre>
+                </div>
+                <div class="task">
+                    Task: Create a list comprehension to store even numbers from
+                    1 to 10.
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Pranav Mandar Mehendale. All rights reserved.</p>
+        </footer>
+
+        <script>
+            function copyCode(button) {
+                let codeBlock = button.nextElementSibling.innerText;
+                navigator.clipboard.writeText(codeBlock);
+                button.innerText = "Copied!";
+                setTimeout(() => (button.innerText = "Copy"), 2000);
+            }
+        </script>
+    </body>
+</html>

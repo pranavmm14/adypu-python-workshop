@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hangman Game Code</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">Python Workshop</a>
+                <ul class="nav-links">
+                    <li><a href="python_refresher.html">Python Basics</a></li>
+                    <li><a href="hangman.html">Hangman Code</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main>
+            <h1>Hangman Game - Python Code</h1>
+            <p>This is the Python code for a Hangman game.</p>
+
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <pre><code class="language-python">
+import random
+import os
+
+# Word categories
+categories = {
+    "Animals": ["elephant", "giraffe", "dolphin", "penguin", "kangaroo"],
+    "Movies": ["titanic", "avatar", "inception", "gladiator", "jaws"],
+    "Countries": ["canada", "brazil", "germany", "japan", "india"]
+}
+
+# Hangman stages
+HANGMAN_PICS = [
+    """
+       +---+
+           |
+           |
+           |
+          ===""",
+    """
+       +---+
+       O   |
+           |
+           |
+          ===""",
+    """
+       +---+
+       O   |
+       |   |
+           |
+          ===""",
+    """
+       +---+
+       O   |
+      /|   |
+           |
+          ===""",
+    """
+       +---+
+       O   |
+      /|\\  |
+           |
+          ===""",
+    """
+       +---+
+       O   |
+      /|\\  |
+      /    |
+          ===""",
+    """
+       +---+
+       O   |
+      /|\\  |
+      / \\  |
+          ==="""
+]
+
+# Colors for terminal output
+RED = "\033[91m"
+GREEN = "\033[92m"
+YELLOW = "\033[93m"
+CYAN = "\033[96m"
+RESET = "\033[0m"
+
+def clear_screen():
+    """Clears the terminal screen."""
+    os.system("cls" if os.name == "nt" else "clear")
+
+def choose_word():
+    """Chooses a random word from a category."""
+    category = random.choice(list(categories.keys()))
+    word = random.choice(categories[category]).upper()
+    return category, word
+
+def display_status(word, guessed_letters, wrong_attempts, category):
+    """Displays the current game status."""
+    clear_screen()
+    print(CYAN + "🎩 HANGMAN GAME 🎩" + RESET)
+    print(HANGMAN_PICS[wrong_attempts])  # Show hangman drawing
+    print(YELLOW + f"Hint: {category}" + RESET)
+    
+    # Show word progress
+    display_word = " ".join([letter if letter in guessed_letters else "_" for letter in word])
+    print(GREEN + f"\nWord: {display_word}" + RESET)
+    
+    # Show used letters
+    print(RED + f"\nUsed letters: {', '.join(sorted(guessed_letters))}" + RESET)
+
+def hangman():
+    """Main function to play the game."""
+    category, word = choose_word()
+    guessed_letters = set()
+    wrong_attempts = 0
+    max_attempts = len(HANGMAN_PICS) - 1
+
+    while wrong_attempts < max_attempts:
+        display_status(word, guessed_letters, wrong_attempts, category)
+        guess = input("\nEnter a letter: ").upper()
+
+        if not guess.isalpha() or len(guess) != 1:
+            print(RED + "Invalid input! Please enter a single letter." + RESET)
+            continue
+
+        if guess in guessed_letters:
+            print(YELLOW + "You already guessed that letter!" + RESET)
+            continue
+
+        guessed_letters.add(guess)
+
+        if guess in word:
+            print(GREEN + "✅ Correct!" + RESET)
+            if set(word) <= guessed_letters:
+                display_status(word, guessed_letters, wrong_attempts, category)
+                print(GREEN + f"\n🎉 Congratulations! You guessed the word: {word} 🎉" + RESET)
+                return
+        else:
+            wrong_attempts += 1
+            print(RED + "❌ Incorrect guess!" + RESET)
+
+    # Game over
+    display_status(word, guessed_letters, wrong_attempts, category)
+    print(RED + f"\n💀 You lost! The word was: {word} 💀" + RESET)
+
+if __name__ == "__main__":
+    hangman()
+            </code></pre>
+            </div>
+        </main>
+
+        <script>
+            function copyCode(button) {
+                let codeBlock = button.nextElementSibling.innerText;
+                navigator.clipboard.writeText(codeBlock);
+                button.innerText = "Copied!";
+                setTimeout(() => (button.innerText = "Copy"), 2000);
+            }
+        </script>
+    </body>
+    <footer>
+        <p>&copy; 2025 Pranav Mandar Mehendale. All rights reserved.</p>
+    </footer>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Python Tkinter & Pygame Guide</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Home</a>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links">
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#widgets">Widgets</a></li>
+                <li><a href="#geometry">Geometry</a></li>
+                <li><a href="#buttons">Buttons</a></li>
+                <li><a href="#canvas">Canvas</a></li>
+                <li><a href="#entry">Entry</a></li>
+                <li><a href="#label">Label</a></li>
+                <li><a href="#messagebox">MessageBox</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="#pygame">Pygame Basics</a></li>
+            </ul>
+        </nav>
+
+        <script>
+            function toggleMenu() {
+                document.querySelector(".nav-links").classList.toggle("show");
+            }
+        </script>
+
+        <header>
+            <h1>Python Tkinter & Pygame Guide</h1>
+        </header>
+
+        <main>
+            <section id="pygame">
+                <h2>Pygame Basics</h2>
+                <p>
+                    Pygame is a cross-platform library used for making 2D games
+                    in Python.
+                </p>
+
+                <h3>Pygame Introduction</h3>
+                <p>
+                    Pygame allows you to create games with graphics, sound, and
+                    user interaction.
+                </p>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code>import pygame
+pygame.init()
+print("Pygame initialized!")</code></pre>
+                </div>
+
+                <h3>Basic Pygame Structure</h3>
+                <p>Every Pygame program has a main loop handling events.</p>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code>import pygame
+pygame.init()
+screen = pygame.display.set_mode((500, 500))
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+pygame.quit()</code></pre>
+                </div>
+
+                <h3>Pygame - Display Modes</h3>
+                <p>Set up the game window using display modes.</p>
+
+                <h3>Pygame - Colors and Events</h3>
+                <p>
+                    Define colors and handle user inputs with keyboard and mouse
+                    events.
+                </p>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code>import pygame
+pygame.init()
+screen = pygame.display.set_mode((400, 300))
+RED = (255, 0, 0)
+pygame.draw.rect(screen, RED, (50, 50, 100, 100))
+pygame.display.update()</code></pre>
+                </div>
+
+                <h3>Pygame - Drawing Shapes</h3>
+                <p>Use Pygame's built-in functions to draw shapes.</p>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code>pygame.draw.circle(screen, (0, 255, 0), (200, 150), 50)</code></pre>
+                </div>
+
+                <h3>Pygame - Using Images</h3>
+                <p>Load and display images in Pygame.</p>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code>image = pygame.image.load('player.png')
+screen.blit(image, (100, 100))</code></pre>
+                </div>
+
+                <h3>Pygame - Playing Sound</h3>
+                <p>Play sound and background music in your game.</p>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code>pygame.mixer.init()
+pygame.mixer.Sound('sound.wav').play()</code></pre>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Pranav Mandar Mehendale. All rights reserved.</p>
+        </footer>
+
+        <script>
+            function copyCode(button) {
+                let codeBlock = button.nextElementSibling.innerText;
+                navigator.clipboard.writeText(codeBlock);
+                button.innerText = "Copied!";
+                setTimeout(() => (button.innerText = "Copy"), 2000);
+            }
+        </script>
+    </body>
+</html>

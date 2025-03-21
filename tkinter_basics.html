@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Python Tkinter Guide</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Home</a>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links">
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#widgets">Widgets</a></li>
+                <li><a href="#geometry">Geometry</a></li>
+                <li><a href="#buttons">Buttons</a></li>
+                <li><a href="#canvas">Canvas</a></li>
+                <li><a href="#entry">Entry</a></li>
+                <li><a href="#label">Label</a></li>
+                <li><a href="#messagebox">MessageBox</a></li>
+                <li><a href="#examples">Examples</a></li>
+            </ul>
+        </nav>
+
+        <script>
+            function toggleMenu() {
+                document.querySelector(".nav-links").classList.toggle("show");
+            }
+        </script>
+
+        <header>
+            <h1>Python Tkinter Guide</h1>
+        </header>
+
+        <main>
+            <section id="intro">
+                <h2>Introduction to Tkinter</h2>
+                <p> Tkinter is Python’s standard GUI library used to create graphical interfaces.</p>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code>import tkinter as tk
+root = tk.Tk()
+root.mainloop()</code></pre>
+                </div>
+            </section>
+
+            <section id="widgets">
+                <h2>Widgets in Tkinter</h2>
+                <p> Tkinter provides various widgets like Buttons, Labels, Entry fields, and more.</p>
+            </section>
+
+            <section id="geometry">
+                <h2>Geometry Management</h2>
+                <p> Tkinter has pack, grid, and place for positioning widgets.</p>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code>import tkinter as tk
+root = tk.Tk()
+b = tk.Button(root, text="Click Me")
+b.pack()
+root.mainloop()</code></pre>
+                </div>
+            </section>
+
+            <section id="buttons">
+                <h2>Buttons</h2>
+                <p> Used for user interactions like clicking actions.</p>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code>import tkinter as tk
+root = tk.Tk()
+b = tk.Button(root, text="Click Me", command=lambda: print("Clicked!"))
+b.pack()
+root.mainloop()</code></pre>
+                </div>
+            </section>
+
+            <section id="canvas">
+                <h2>Canvas</h2>
+                <p> Used to draw shapes, images, and complex graphics.</p>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code>import tkinter as tk
+root = tk.Tk()
+canvas = tk.Canvas(root, width=200, height=100)
+canvas.create_rectangle(50, 20, 150, 80, fill="blue")
+canvas.pack()
+root.mainloop()</code></pre>
+                </div>
+            </section>
+
+            <section id="entry">
+                <h2>Entry Widget</h2>
+                <p> Allows user text input.</p>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code>import tkinter as tk
+root = tk.Tk()
+e = tk.Entry(root)
+e.pack()
+root.mainloop()</code></pre>
+                </div>
+            </section>
+
+            <section id="label">
+                <h2>Label Widget</h2>
+                <p> Displays text or images.</p>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code>import tkinter as tk
+root = tk.Tk()
+l = tk.Label(root, text="Hello Tkinter")
+l.pack()
+root.mainloop()</code></pre>
+                </div>
+            </section>
+
+            <section id="messagebox">
+                <h2>MessageBox</h2>
+                <p> Displays pop-up messages.</p>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code>import tkinter as tk
+from tkinter import messagebox
+root = tk.Tk()
+messagebox.showinfo("Info", "This is a message box")
+root.mainloop()</code></pre>
+                </div>
+            </section>
+
+            <section id="examples">
+                <h2>Examples</h2>
+                <p>Here are some complete examples using Tkinter:</p>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code># Example 1: Simple Tkinter Window
+import tkinter as tk
+root = tk.Tk()
+root.title("Simple Window")
+root.geometry("300x200")
+root.mainloop()</code></pre>
+                </div>
+                <div class="code-block">
+                    <button onclick="copyCode(this)">Copy</button>
+                    <pre><code># Example 2: Button Click Counter
+import tkinter as tk
+count = 0
+def increment():
+    global count
+    count += 1
+    label.config(text=f"Count: {count}")
+root = tk.Tk()
+label = tk.Label(root, text="Count: 0")
+label.pack()
+button = tk.Button(root, text="Click Me", command=increment)
+button.pack()
+root.mainloop()</code></pre>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Pranav Mandar Mehendale. All rights reserved.</p>
+        </footer>
+
+        <script>
+            function copyCode(button) {
+                let codeBlock = button.nextElementSibling.innerText;
+                navigator.clipboard.writeText(codeBlock);
+                button.innerText = "Copied!";
+                setTimeout(() => (button.innerText = "Copy"), 2000);
+            }
+        </script>
+    </body>
+</html>

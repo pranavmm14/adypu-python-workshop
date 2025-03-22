@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Memory Game Code</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">Python Workshop</a>
+                <ul class="nav-links">
+                    <li><a href="hangman.html">Hangman Code</a></li>
+                    <li><a href="snake_game.html">Snake Code</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main>
+            <h1>Memory Game - Python Code</h1>
+            <p>This is the Python code for a Memory game.</p>
+
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <pre><code class="language-python">
+import tkinter as tk
+import tkinter.messagebox
+import random
+
+# Constants
+GRID_SIZE, CARD_SIZE = 5, 100
+NUM_PAIRS = (GRID_SIZE * GRID_SIZE) // 2
+COLORS = {"hidden": "gray", "revealed": "lightblue", "matched": "green"}
+
+# Shuffle card values
+card_values = list(range(1, NUM_PAIRS + 1)) * 2
+random.shuffle(card_values)
+
+# Game state
+first_pick, second_pick = None, None
+revealed = [[False] * GRID_SIZE for _ in range(GRID_SIZE)]
+buttons = [[None] * GRID_SIZE for _ in range(GRID_SIZE)]
+
+# Tkinter setup
+root = tk.Tk()
+root.title("Memory Card Game")
+
+
+def check_win():
+if all(all(row) for row in revealed):
+    tkinter.messagebox.showinfo("Congratulations!", "You won!")
+    root.quit()
+
+
+def on_card_click(r, c):
+global first_pick, second_pick
+
+if revealed[r][c]:
+    return
+
+buttons[r][c].config(
+    text=str(card_values[r * GRID_SIZE + c]),
+    bg=COLORS["revealed"],
+    state="disabled",
+)
+revealed[r][c] = True
+
+if not first_pick:
+    first_pick = (r, c)
+elif not second_pick:
+    second_pick = (r, c)
+    root.after(500, compare_cards)
+
+
+def compare_cards():
+global first_pick, second_pick
+r1, c1, r2, c2 = *first_pick, *second_pick
+
+if card_values[r1 * GRID_SIZE + c1] == card_values[r2 * GRID_SIZE + c2]:
+    buttons[r1][c1].config(bg=COLORS["matched"])
+    buttons[r2][c2].config(bg=COLORS["matched"])
+else:
+    for r, c in [first_pick, second_pick]:
+        buttons[r][c].config(text="", bg=COLORS["hidden"], state="normal")
+        revealed[r][c] = False
+
+first_pick, second_pick = None, None
+check_win()
+
+
+# Create grid buttons
+for r in range(GRID_SIZE):
+for c in range(GRID_SIZE):
+    buttons[r][c] = tk.Button(
+        root,
+        text="",
+        width=6,
+        height=3,
+        bg=COLORS["hidden"],
+        command=lambda r=r, c=c: on_card_click(r, c),
+    )
+    buttons[r][c].grid(row=r, column=c, padx=5, pady=5)
+
+root.mainloop()
+</main>                    
+
+        <script>
+            function copyCode(button) {
+                let codeBlock = button.nextElementSibling.innerText;
+                navigator.clipboard.writeText(codeBlock);
+                button.innerText = "Copied!";
+                setTimeout(() => (button.innerText = "Copy"), 2000);
+            }
+        </script>
+    </body>
+    <footer>
+        <p>&copy; 2025 Pranav Mandar Mehendale. All rights reserved.</p>
+    </footer>
+</html>

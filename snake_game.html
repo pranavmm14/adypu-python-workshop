@@ -29,81 +29,81 @@
             <div class="code-block">
                 <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                 <pre><code class="language-python">
-                    import pygame
-                    import random
-                    
-                    # Initialize pygame
-                    pygame.init()
-                    
-                    # Screen settings
-                    WIDTH, HEIGHT = 600, 400
-                    BLOCK_SIZE = 20
-                    screen = pygame.display.set_mode((WIDTH, HEIGHT))
-                    pygame.display.set_caption("Snake Game")
-                    
-                    # Colors
-                    WHITE, GREEN, RED, BLACK = (255, 255, 255), (0, 255, 0), (255, 0, 0), (0, 0, 0)
-                    
-                    # Snake and Food settings
-                    clock = pygame.time.Clock()
-                    font = pygame.font.SysFont("Arial", 25)
-                    
-                    def draw_snake(snake):
-                        for block in snake:
-                            pygame.draw.rect(screen, GREEN, pygame.Rect(block[0], block[1], BLOCK_SIZE, BLOCK_SIZE))
-                    
-                    def game_loop():
-                        snake = [[100, 100]]
-                        direction = "RIGHT"
-                        food = [random.randrange(0, WIDTH, BLOCK_SIZE), random.randrange(0, HEIGHT, BLOCK_SIZE)]
-                        
-                        running = True
-                        while running:
-                            screen.fill(BLACK)
-                            for event in pygame.event.get():
-                                if event.type == pygame.QUIT:
-                                    running = False
-                                elif event.type == pygame.KEYDOWN:
-                                    if event.key == pygame.K_UP and direction != "DOWN":
-                                        direction = "UP"
-                                    elif event.key == pygame.K_DOWN and direction != "UP":
-                                        direction = "DOWN"
-                                    elif event.key == pygame.K_LEFT and direction != "RIGHT":
-                                        direction = "LEFT"
-                                    elif event.key == pygame.K_RIGHT and direction != "LEFT":
-                                        direction = "RIGHT"
-                    
-                            # Move the snake
-                            head = snake[0][:]
-                            if direction == "UP":
-                                head[1] -= BLOCK_SIZE
-                            elif direction == "DOWN":
-                                head[1] += BLOCK_SIZE
-                            elif direction == "LEFT":
-                                head[0] -= BLOCK_SIZE
-                            elif direction == "RIGHT":
-                                head[0] += BLOCK_SIZE
-                            
-                            snake.insert(0, head)
-                    
-                            # Check collision with food
-                            if head == food:
-                                food = [random.randrange(0, WIDTH, BLOCK_SIZE), random.randrange(0, HEIGHT, BLOCK_SIZE)]
-                            else:
-                                snake.pop()  # Remove tail
-                    
-                            # Check collision with walls or itself
-                            if head in snake[1:] or not (0 <= head[0] < WIDTH and 0 <= head[1] < HEIGHT):
-                                running = False
-                    
-                            draw_snake(snake)
-                            pygame.draw.rect(screen, RED, pygame.Rect(food[0], food[1], BLOCK_SIZE, BLOCK_SIZE))
-                            pygame.display.flip()
-                            clock.tick(10)
-                    
-                        pygame.quit()
-                    
-                    game_loop()
+import pygame
+import random
+
+# Initialize pygame
+pygame.init()
+
+# Screen settings
+WIDTH, HEIGHT = 600, 400
+BLOCK_SIZE = 20
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Snake Game")
+
+# Colors
+WHITE, GREEN, RED, BLACK = (255, 255, 255), (0, 255, 0), (255, 0, 0), (0, 0, 0)
+
+# Snake and Food settings
+clock = pygame.time.Clock()
+font = pygame.font.SysFont("Arial", 25)
+
+def draw_snake(snake):
+    for block in snake:
+        pygame.draw.rect(screen, GREEN, pygame.Rect(block[0], block[1], BLOCK_SIZE, BLOCK_SIZE))
+
+def game_loop():
+    snake = [[100, 100]]
+    direction = "RIGHT"
+    food = [random.randrange(0, WIDTH, BLOCK_SIZE), random.randrange(0, HEIGHT, BLOCK_SIZE)]
+    
+    running = True
+    while running:
+        screen.fill(BLACK)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP and direction != "DOWN":
+                    direction = "UP"
+                elif event.key == pygame.K_DOWN and direction != "UP":
+                    direction = "DOWN"
+                elif event.key == pygame.K_LEFT and direction != "RIGHT":
+                    direction = "LEFT"
+                elif event.key == pygame.K_RIGHT and direction != "LEFT":
+                    direction = "RIGHT"
+
+        # Move the snake
+        head = snake[0][:]
+        if direction == "UP":
+            head[1] -= BLOCK_SIZE
+        elif direction == "DOWN":
+            head[1] += BLOCK_SIZE
+        elif direction == "LEFT":
+            head[0] -= BLOCK_SIZE
+        elif direction == "RIGHT":
+            head[0] += BLOCK_SIZE
+        
+        snake.insert(0, head)
+
+        # Check collision with food
+        if head == food:
+            food = [random.randrange(0, WIDTH, BLOCK_SIZE), random.randrange(0, HEIGHT, BLOCK_SIZE)]
+        else:
+            snake.pop()  # Remove tail
+
+        # Check collision with walls or itself
+        if head in snake[1:] or not (0 <= head[0] < WIDTH and 0 <= head[1] < HEIGHT):
+            running = False
+
+        draw_snake(snake)
+        pygame.draw.rect(screen, RED, pygame.Rect(food[0], food[1], BLOCK_SIZE, BLOCK_SIZE))
+        pygame.display.flip()
+        clock.tick(10)
+
+    pygame.quit()
+
+game_loop()
                 </main>                    
 
         <script>

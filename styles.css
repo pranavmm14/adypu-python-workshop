@@ -26,7 +26,8 @@ a:hover {
 /* Navigation Bar */
 .navbar {
     background: #1e3a8a;
-    padding: 15px;
+    background: rgba(30, 58, 138, 0.9); 
+    padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -38,11 +39,86 @@ a:hover {
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Logo stays on the left */
 .navbar .logo {
     color: white;
     font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
+}
+
+/* Nav Links stay on the right */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+/* Navigation links */
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+}
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background: #1e3a8a;
+    border-radius: 5px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+}
+
+.dropdown-menu a {
+    padding: 10px;
+    display: block;
+}
+
+.nav-links .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background: #1e3a8a;
+        border-radius: 5px;
+        flex-direction: column;
+        display: none;
+        width: 200px;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 10px;
+        width: 100%;
+        text-align: right;
+    }
+
+    .dropdown-menu {
+        position: static;
+        width: 100%;
+    }
 }
 
 /* Ensure content is below fixed navbar */
@@ -111,7 +187,6 @@ body {
         margin: 10px 0;
     }
 }
-
 
 /* Header */
 header {
@@ -275,8 +350,8 @@ footer p span {
 }
 /* Code Block Styling - Matches Theme */
 .code-block {
-    background: #eff6ff; 
-    color: #1e3a8a; 
+    background: #eff6ff;
+    color: #1e3a8a;
     font-family: "Fira Code", monospace;
     padding: 15px;
     border-left: 5px solid #3b82f6;
@@ -295,7 +370,7 @@ footer p span {
     font-size: 14px;
     text-align: left;
     overflow-x: auto;
-    color: #333; 
+    color: #333;
 }
 
 /* Copy Button Styling */
